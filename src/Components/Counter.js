@@ -10,10 +10,15 @@ export default class Counter extends Component {
             count: prevState.count + 1
         }))
     }
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.count!==this.state.count){
+            console.log(`Counter changed from ${prevState.count} to ${this.state.count}`)
+        }
+    }
   render() {
     return (
       <>
-        <p>Count: {this.state.count}</p>
+        <p>Current Item: {this.state.count}</p>
         <button onClick={this.increment}>Increment</button>
       </>
     )
