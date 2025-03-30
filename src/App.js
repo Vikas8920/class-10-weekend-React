@@ -1,30 +1,24 @@
-import React, { Component } from 'react'
-import Logger from './Components/Logger'
-import Counter from './Components/Counter'
-import Button from './Components/Button'
-import Garrage from './Components/Garrage'
-import Football from './Components/Football'
-import KeyPress from './Components/KeyPress'
-import Garrage2 from './Components/Garrage2'
+import React from 'react'
+import Form from './Components/Form'
+import MultipleFieldForm from './Components/MultipleFieldForm'
+import TextArea from './Components/TextArea'
+import Select from './Components/Select'
+import RadioButton from './Components/RadioButton'
 
-export default class App extends Component {
-  render() {
-    return (
-      <>
-        <Logger/>
-        <hr/>
-        <Counter/>
-        <hr/>
-        <Button name={'Submit'}/>
-        <hr/>
-        <Garrage/>
-        <hr/>
-        <Football/>
-        <hr/>
-        <KeyPress/>
-        <hr/>
-        <Garrage2/>
-      </>
-    )
-  }
+const App = () => {
+  return (
+    <>
+      <Form/>
+      <hr/>
+      <MultipleFieldForm/>
+      <hr/>
+      <TextArea/>
+      <hr/>
+      <Select/>
+      <hr/>
+      <RadioButton/>
+    </>
+  )
 }
+
+export default App
