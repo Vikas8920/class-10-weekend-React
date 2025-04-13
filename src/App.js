@@ -1,41 +1,37 @@
 import React, { useState } from 'react'
 import Form from './Components/Form'
-import MultipleFieldForm from './Components/MultipleFieldForm'
-import TextArea from './Components/TextArea'
-import Select from './Components/Select'
-import RadioButton from './Components/RadioButton'
-import Checkbox from './Components/Checkbox'
-import DisplayForm from './Components/DisplayForm'
-import DisplayData from './Components/DisplayData'
-import AnotherForm from './Components/AnotherForm'
 
 const App = () => {
-  const [formData, setFormData] = useState(null)
+  const [form, setForm] = useState(true)
+  const [msg, setMsg] = useState('')
 
-  const handleFormSubmit = (data) =>{
-    setFormData(data)
+  // login Form
+  const handleForm = () =>{
+    if(form === false){
+      setForm(true)
+      setMsg('Login form shows successfully')
+    }
   }
+
+  // Registration Form
+ const handleForm1 = () =>{
+  if(form === true){
+    setForm(false)
+    setMsg('Registration form shows successfully')
+  }
+ }
   return (
     <>
-      <Form/>
-      <hr/>
-      <MultipleFieldForm/>
-      <hr/>
-      <TextArea/>
-      <hr/>
-      <Select/>
-      <hr/>
-      <RadioButton/>
-      <hr/>
-      <Checkbox/>
-      <hr/>
-      <DisplayForm onFormSubmit={handleFormSubmit}/>
-      {formData && <DisplayData data={formData}/>}
-
-      {/* if formData exists, render the displayData component */}
-
-      <hr/>
-      <AnotherForm/>
+      <div className='container d-flex justify-content-evenly'>
+        <div className='mt-5'>
+          <button onClick={handleForm} className='btn btn-success mx-4 px-4'>Login Form</button>
+          <button onClick={handleForm1} className='btn btn-primary'>Registration Form</button>
+          <h4 className='mt-5 pt-5 ms-4 text-primary'>{msg}</h4>
+        </div>
+        <div>
+          <Form form={form}/>
+        </div>
+      </div>
     </>
   )
 }
