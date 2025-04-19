@@ -1,37 +1,30 @@
-import React, { useState } from 'react'
-import Form from './Components/Form'
+import React from 'react'
+import Navbar from './Components/Navbar'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './Components/Home'
+import About from './Components/About'
+import Blog from './Components/Blog'
+import Contact from './Components/Contact'
+import './App.css'
+import NoPage from './Components/NoPage'
+import ParentComponent from './Components/ParentComponent'
 
 const App = () => {
-  const [form, setForm] = useState(true)
-  const [msg, setMsg] = useState('')
-
-  // login Form
-  const handleForm = () =>{
-    if(form === false){
-      setForm(true)
-      setMsg('Login form shows successfully')
-    }
-  }
-
-  // Registration Form
- const handleForm1 = () =>{
-  if(form === true){
-    setForm(false)
-    setMsg('Registration form shows successfully')
-  }
- }
   return (
     <>
-      <div className='container d-flex justify-content-evenly'>
-        <div className='mt-5'>
-          <button onClick={handleForm} className='btn btn-success mx-4 px-4'>Login Form</button>
-          <button onClick={handleForm1} className='btn btn-primary'>Registration Form</button>
-          <h4 className='mt-5 pt-5 ms-4 text-primary'>{msg}</h4>
-        </div>
-        <div>
-          <Form form={form}/>
-        </div>
-      </div>
+     <Router>
+       <Navbar/>
+       <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/blogs' element={<Blog/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='*' element={<NoPage/>}/>
+       </Routes>
+     </Router>
+
+     <hr/>
+     <ParentComponent/>
     </>
   )
 }
